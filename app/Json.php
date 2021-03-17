@@ -84,6 +84,8 @@ class Json
         if (!$client) {
             return;
         }
+        if ($client->id = $id) {
+        }
         foreach ($this->data as $key => $client) {
             if ($client['id'] == $id) {
                 $client = ['id' => $id];

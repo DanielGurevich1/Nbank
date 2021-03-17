@@ -1,7 +1,10 @@
 <?php
 
+
+
 class ClientController
 {
+    // public $client, ;
 
     public function index()
     {
@@ -23,10 +26,11 @@ class ClientController
         $client->id = $_POST['id'];
         $client->name = $_POST['name'];
         $client->surname = $_POST['surname'];
-
         $client->idn = $_POST['idn'];
         $client->balance = 0;
+        $client->topup = $_POST['topup'];
         $client->AC = ClientController::bankIban();
+
 
 
         $nameLength = strlen($_POST['name']);
@@ -44,9 +48,15 @@ class ClientController
         die;
     }
 
-    public function addMoney()
-    {
-    }
+    // public function addMoney()
+    // {
+    //     $client = $this->getClient($id); // check if client is set
+    //     // if (!$client) {
+    //     //     return;
+    //     // }
+    //     if ($client->id = $id) {
+    //     }
+    // }
     // iskelta is Json
     public static function bankIban()
     {
@@ -55,6 +65,33 @@ class ClientController
         $x = 7044060000;
         $accountNum =  "$first" . $x . $lastfigures;
         return $accountNum;
+    }
+
+    public function addMoney(int $id, int $count)
+
+    {
+        // $clients =  read();
+        $client = $this->getClient($id); // check if client is set
+        if (!$client) {
+            return;
+        }
+        if ($client->id = $id) {
+        }
+        foreach ($this->data as $key => $client) {
+            if ($client['id'] == $id) {
+                $client = ['id' => $id];
+                $this->data[$key] = $client;
+                $client['balance'] += $count;
+                if ($client['balance'] > 0) {
+                    $_SESSION['messages']['success'][] = "Amount was added!";
+                    header('Location:' . URL);
+                } else {
+                    $_SESSION['messages']['error'][] = "Account cannot be overdrafted";
+                    header('Location:' . URL . 'add');
+                }
+                return;
+            }
+        }
     }
 }
         // }

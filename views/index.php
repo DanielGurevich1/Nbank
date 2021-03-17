@@ -40,8 +40,15 @@
                         <td><?= $client->idn ?></td>
                         <td><?= $client->AC ?> </td>
                         <td><?= $client->balance ?> EUR</td>
-                        <td><?= $client->topup ?> EUR</td>
+                        <!-- <td><?= $client->topup ?> EUR</td> -->
 
+                        <td>
+                            <form action="" method="POST">
+                                <input type="hidden" name="id" value="<?= $client->id ?>">
+                                <input type="number" name="topup">
+                            </form>
+
+                        </td>
                         <td>
                             <form action="" method="POST">
                                 <input type="hidden" name="id" value="<?= $client->id ?>">
@@ -50,10 +57,15 @@
                                 <button type="submit" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
                                 <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Delete</button>
                             </form>
+                        </td>
                     </tr>
-                    </td>
+
             </tbody>
-        <?php endforeach ?>
+        <?php endforeach
+
+
+
+        ?>
         </table>
     </body>
 

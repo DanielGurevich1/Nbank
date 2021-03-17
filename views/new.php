@@ -14,8 +14,8 @@ require DIR . 'views/menu.php';
 // $idnum = 23456789;
 $iban = $this->bankIban();
 
-
-
+$x = $this->addMoney();
+echo $x;
 $idn = rand(6688, 7688);
 $firstNum = rand(3, 6);
 $d = (date("ymd"));
@@ -54,6 +54,7 @@ $ak = $firstNum . $d . $idn;
         </div>
 
     </form>
+
 </div>
 <?php require DIR . 'views/bottom.php'; ?>
 
