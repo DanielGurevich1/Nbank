@@ -24,10 +24,7 @@ class Json
     // __destruct is implements when object is unset
     public function __destruct()
     {
-        // echo 'sdfghjkfghdfghjsdfghjkdfghjksdfghjksdfghj';
-        // die;
         // before unset data should be put to json file, to store it
-
         file_put_contents(DIR . 'data/client.json', json_encode($this->data));
     }
     public function read(): array
@@ -38,11 +35,7 @@ class Json
 
     public function write(array $data): void
     {
-        // echo 'sdfghjkfghdfghjsdfghjkdfghjksdfghjksdfghj';
-        // die;
         $this->data = $data;
-        // var_dump($this->data);
-
     }
 
     private function getNextId(): int
@@ -132,7 +125,7 @@ class Json
     {
 
         foreach ($this->data as $key => $client) {
-            if ($client['id'] == $id) {
+            if ($client->id == $id) { // ??
                 unset($this->data[$key]);
                 return;
             }
@@ -144,19 +137,11 @@ class Json
         $idn = rand(6688, 7688);
         $firstNum = rand(3, 6);
         $d = (date("ymd"));
-        // $d = $_POST['date'];
         $this->data[] = $firstNum . $d . $idn;
+        return $firstNum . $d . $idn;
     }
 
-    public function bankIban()
-    {
-        $lastfigures = rand(116688, 999688);
-        $first = 'LT';
-        $x = 7044060000;
-        // $d = $_POST['date'];
-        $accountNum =  "$first" . $x . $lastfigures;
-        $this->data[] = $accountNum;
-    }
+
 
     public function alert($alertMessage)
     {

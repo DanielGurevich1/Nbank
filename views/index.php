@@ -37,10 +37,8 @@
                     <td><?= $client->name ?></td>
                     <td><?= $client->surname ?></td>
                     <td><?= $client->idn ?></td>
-
-                    <td><?= $client->balance ?></td>
-                    <td><?= $client->AC ?> EUR</td>
-
+                    <td><?= $client->AC ?> </td>
+                    <td><?= $client->balance ?> EUR</td>
 
                     <td>
                         <form action="" method="POST">

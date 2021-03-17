@@ -20,13 +20,13 @@ class ClientController
     {
         // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $client = new Client;
-        // $client->id = $_POST['id'];
+        $client->id = $_POST['id'];
         $client->name = $_POST['name'];
         $client->surname = $_POST['surname'];
 
-        // $client->idn = $_POST['idn'];
-        // $client->balance = 0;
-        // $client->AC = $_POST['AC'];
+        $client->idn = $_POST['idn'];
+        $client->balance = 0;
+        $client->AC = ClientController::bankIban();
 
 
         $nameLength = strlen($_POST['name']);
@@ -43,7 +43,16 @@ class ClientController
         header('Location: ' . URL);
         die;
     }
+    // iskelta is Json
+    public static function bankIban()
+    {
+        $lastfigures = rand(116688, 999688);
+        $first = 'LT';
+        $x = 7044060000;
+        $accountNum =  "$first" . $x . $lastfigures;
+        return $accountNum;
+    }
 }
         // }
     // }
-// }
+// } 
