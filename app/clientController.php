@@ -43,6 +43,10 @@ class ClientController
         header('Location: ' . URL);
         die;
     }
+
+    public function addMoney()
+    {
+    }
     // iskelta is Json
     public static function bankIban()
     {

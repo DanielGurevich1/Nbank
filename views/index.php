@@ -16,6 +16,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">ACC NUM</th>
                     <th scope="col">Balance</th>
+                    <th scope="col">Topup</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -32,27 +33,27 @@
                 //print
                 foreach ($clients as $client) : ?>
 
-                <tr>
-                    <th scope="row"><?= $client->id ?></th>
-                    <td><?= $client->name ?></td>
-                    <td><?= $client->surname ?></td>
-                    <td><?= $client->idn ?></td>
-                    <td><?= $client->AC ?> </td>
-                    <td><?= $client->balance ?> EUR</td>
+                    <tr>
+                        <th scope="row"><?= $client->id ?></th>
+                        <td><?= $client->name ?></td>
+                        <td><?= $client->surname ?></td>
+                        <td><?= $client->idn ?></td>
+                        <td><?= $client->AC ?> </td>
+                        <td><?= $client->balance ?> EUR</td>
+                        <td><?= $client->topup ?> EUR</td>
 
-                    <td>
-                        <form action="" method="POST">
-                            <input type="hidden" name="id" value="<?= $client->id ?>">
+                        <td>
+                            <form action="" method="POST">
+                                <input type="hidden" name="id" value="<?= $client->id ?>">
 
-                            <button type="submit" name="btn-add" class="btn btn-sm btn-outline-primary">Add</button>
-                            <button type="submit" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
-                            <button type="submit" name="btn-delete"
-                                class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
-                </tr>
-                </td>
+                                <button type="submit" name="btn-add" class="btn btn-sm btn-outline-primary">Add</button>
+                                <button type="submit" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
+                                <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                    </tr>
+                    </td>
             </tbody>
-            <?php endforeach ?>
+        <?php endforeach ?>
         </table>
     </body>
 
