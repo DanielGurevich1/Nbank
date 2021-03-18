@@ -1,5 +1,7 @@
 <?php require DIR . 'views/top.php' ?>
-<?php require DIR . 'views/menu.php'; ?>
+<?php require DIR . 'views/menu.php';
+
+_d($id); ?>
 
 <div class="container">
 
@@ -16,7 +18,6 @@
                     <th scope="col">ID</th>
                     <th scope="col">ACC NUM</th>
                     <th scope="col">Balance</th>
-                    <th scope="col">Topup</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -40,21 +41,15 @@
                         <td><?= $client->idn ?></td>
                         <td><?= $client->AC ?> </td>
                         <td><?= $client->balance ?> EUR</td>
-                        <!-- <td><?= $client->topup ?> EUR</td> -->
+
+
 
                         <td>
                             <form action="" method="POST">
                                 <input type="hidden" name="id" value="<?= $client->id ?>">
-                                <input type="number" name="topup">
-                            </form>
 
-                        </td>
-                        <td>
-                            <form action="" method="POST">
-                                <input type="hidden" name="id" value="<?= $client->id ?>">
-
-                                <button type="submit" name="btn-add" class="btn btn-sm btn-outline-primary">Add</button>
-                                <button type="submit" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
+                                <button href="http://localhost:8898/Nbank/addMoney" name="btn-add" class="btn btn-sm btn-outline-primary">Add</button>
+                                <button href="http://localhost:8898/Nbank/send" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
                                 <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Delete</button>
                             </form>
                         </td>

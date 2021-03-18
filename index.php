@@ -16,6 +16,10 @@ if ('' == $uri[0]) {
     (new ClientController)->new();
 } elseif ('store' == $uri[0]) {
     (new ClientController)->store();
+} elseif ('addMoney' == $uri[0]) {
+
+    (new ClientController)->addMoney($id);
+    _d($id);
 }
 
 // str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']) 

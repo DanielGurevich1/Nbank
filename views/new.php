@@ -1,29 +1,16 @@
 <?php require DIR . 'views/top.php' ?>
 <?php
 require DIR . 'views/menu.php';
-// require DIR . 'app/Json.php';
-// $newID = new Json();
-// echo $newID->createID();
-// echo $newID->data[0];
 
-
-// $rand = Json::getDb()->createID();
-
-// echo Json::getDb()->createID();
-// $idnum = $this->createID();
-// $idnum = 23456789;
 $iban = $this->bankIban();
 
-$x = $this->addMoney();
-echo $x;
-$idn = rand(6688, 7688);
-$firstNum = rand(3, 6);
-$d = (date("ymd"));
-$ak = $firstNum . $d . $idn;
+// $x = $this->addMoney();
+// echo $x;
+_d($id);
 ?>
 <div class="container">
 
-    <h4>Hello, <?= $_SESSION['user']['name'] ?></h4>
+    <!-- <h4>Hello, <?= $_SESSION['user']['name'] ?></h4> -->
     <a href="<?= URL ?>login.php?logout">Logout</a>
 
     <h5><?= $pageTitle ?></h5>
@@ -40,8 +27,8 @@ $ak = $firstNum . $d . $idn;
             </div>
 
             <div class="col">
-                <input type="number" class="form-control" placeholder="ID number" aria-label="ID Number"
-                    value="<?= $ak ?>" name="idn">
+                <input type="number" class="form-control" placeholder="ID number" aria-label="ID Number" value=""
+                    name="idn">
             </div>
 
             <div class="col">
@@ -61,3 +48,15 @@ $ak = $firstNum . $d . $idn;
 </form>
 </div>
 <?php require DIR . 'views/bottom.php'; ?>
+
+<!-- // require DIR . 'app/Json.php';
+// $newID = new Json();
+// echo $newID->createID();
+// echo $newID->data[0];
+
+
+// $rand = Json::getDb()->createID();
+
+// echo Json::getDb()->createID();
+// $idnum = $this->createID();
+// $idnum = 23456789; -->

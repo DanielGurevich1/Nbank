@@ -1,7 +1,5 @@
 <?php
 
-
-
 class ClientController
 {
     // public $client, ;
@@ -9,8 +7,6 @@ class ClientController
     public function index()
     {
         $pageTitle = 'Hello Danny';
-        // var_dump(Json::getDb());
-        // die;
         $clients = Json::getDb()->read();
         require DIR . 'views/index.php';
     }
@@ -43,40 +39,25 @@ class ClientController
         //     } else {
         // echo 'sdfghjkfghdfghjsdfghjkdfghjksdfghjksdfghj';
         // die;
-        Json::getDb()->createClient($client);
+        Json::getDb()->createClient($client); //???
         header('Location: ' . URL);
         die;
     }
 
-    // public function addMoney()
-    // {
-    //     $client = $this->getClient($id); // check if client is set
-    //     // if (!$client) {
-    //     //     return;
-    //     // }
-    //     if ($client->id = $id) {
-    //     }
-    // }
-    // iskelta is Json
     public static function bankIban()
     {
         $lastfigures = rand(116688, 999688);
         $first = 'LT';
         $x = 7044060000;
-        $accountNum =  "$first" . $x . $lastfigures;
+        $accountNum =  $first . $x . $lastfigures;
         return $accountNum;
     }
-
-    public function addMoney(int $id, int $count)
+    public function addMoney($id)
 
     {
-        // $clients =  read();
-        $client = $this->getClient($id); // check if client is set
-        if (!$client) {
-            return;
-        }
-        if ($client->id = $id) {
-        }
+        $client = Json::getDb()->getClient($id);
+        $pageTitle = 'Edit Account: ' . $client->id;
+        require DIR . 'views/edit.php';
         foreach ($this->data as $key => $client) {
             if ($client['id'] == $id) {
                 $client = ['id' => $id];
@@ -93,7 +74,28 @@ class ClientController
             }
         }
     }
-}
-        // }
+    // {
+    //     // $clients =  read();
+    //     $client = $this->getClient($id); // check if client is set
+    //     if (!$client) {
+    //         return;
+    //     }
+    //     if ($client->id = $id) {
+    //     }
+    //     foreach ($this->data as $key => $client) {
+    //         if ($client['id'] == $id) {
+    //             $client = ['id' => $id];
+    //             $this->data[$key] = $client;
+    //             $client['balance'] += $count;
+    //             if ($client['balance'] > 0) {
+    //                 $_SESSION['messages']['success'][] = "Amount was added!";
+    //                 header('Location:' . URL);
+    //             } else {
+    //                 $_SESSION['messages']['error'][] = "Account cannot be overdrafted";
+    //                 header('Location:' . URL . 'add');
+    //             }
+    //             return;
+    //         }
+    //     }
     // }
-// } 
+}

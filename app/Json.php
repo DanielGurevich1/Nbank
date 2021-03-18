@@ -32,13 +32,12 @@ class Json
         return $this->data;
     }
 
-
     public function write(array $data): void
     {
         $this->data = $data;
     }
 
-    private function getNextId(): int
+    public function getNextId(): int
     {
         if (!file_exists(DIR . 'data/indexes.json')) {
             $index = json_encode(['id' => 1,]);
@@ -122,7 +121,6 @@ class Json
         }
     }
 
-
     public function deleteUser(int $id): void
     {
 
@@ -142,8 +140,6 @@ class Json
         $this->data[] = $firstNum . $d . $idn;
         return $firstNum . $d . $idn;
     }
-
-
 
     public function alert($alertMessage)
     {
