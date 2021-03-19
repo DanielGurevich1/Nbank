@@ -54,7 +54,7 @@ class ClientController
         $pageTitle = 'Send money - Fill in the fields to add a new account';
         require DIR . 'views/send.php';
     }
-    public function delete()
+    public function delete($id)
     {
         Json::getDb()->delete($id);
 

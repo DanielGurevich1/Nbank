@@ -123,7 +123,7 @@ class Json
         foreach ($this->data as $key => $client) {
             if ($client->id == $id) { // ??
                 unset($this->data[$key]);
-                _dd($id);
+
                 $this->data = array_values($this->data);
                 return;
             }

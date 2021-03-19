@@ -18,7 +18,7 @@ if ('' == $uri[0]) {
     (new ClientController)->store();
 } elseif ('add' == $uri[0]) {
 
-    (new ClientController)->add();
+    (new ClientController)->add((int)$uri[1]);
 } elseif ('send' == $uri[0]) {
 
     (new ClientController)->send();
