@@ -19,6 +19,8 @@
                     <th scope="col">ACC NUM</th>
                     <th scope="col">Balance</th>
                     <th scope="col">Actions</th>
+                    <th scope="col">Add</th>
+                    <th scope="col">Send</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
@@ -49,11 +51,21 @@
                         <form action="" method="POST">
                             <input type="hidden" name="id" value="<?= $client->id ?>">
 
-                            <button href="<?= URL ?>add/<?= $client->id ?>" name="btn-add"
-                                class="btn btn-sm btn-outline-primary">Add</button>
+                            <!-- <button href="<?= URL ?>add/<?= $client->id ?>" name="btn-add"
+                                class="btn btn-sm btn-outline-primary">Add</button> -->
                             <button href="http://localhost:8898/Nbank/send" name="btn-send"
                                 class="btn btn-sm btn-outline-secondary">Send</button>
 
+                        </form>
+                    </td>
+                    <td>
+                        <form style="diplay:inline-block" action="<?= URL ?>add/<?= $client->id ?>" method="POST">
+
+                            <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Add</button>
+                        </form>
+                        <form style="diplay:inline-block" action="<?= URL ?>send/<?= $client->id ?>" method="POST">
+
+                            <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Send</button>
                         </form>
                     </td>
                     <td>

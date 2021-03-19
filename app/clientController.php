@@ -48,9 +48,9 @@ class ClientController
         $pageTitle = 'Add money - Fill in the fields to add a new account';
         require DIR . 'views/add.php';
     }
-    public function send()
+    public function send($id)
     {
-        // $client = Json::getDb()->getClient($id);
+        $client = Json::getDb()->getClient($id);
         $pageTitle = 'Send money - Fill in the fields to add a new account';
         require DIR . 'views/send.php';
     }
