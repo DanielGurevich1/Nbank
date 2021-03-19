@@ -1,7 +1,7 @@
 <?php require DIR . 'views/top.php' ?>
 <?php require DIR . 'views/menu.php';
 
-_d($id); ?>
+?>
 
 <div class="container">
 
@@ -48,7 +48,7 @@ _d($id); ?>
                             <form action="" method="POST">
                                 <input type="hidden" name="id" value="<?= $client->id ?>">
 
-                                <button href="http://localhost:8898/Nbank/addMoney" name="btn-add" class="btn btn-sm btn-outline-primary">Add</button>
+                                <button href="<?= URL ?>add/<?= $client->id ?>" name="btn-add" class="btn btn-sm btn-outline-primary">Add</button>
                                 <button href="http://localhost:8898/Nbank/send" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
                                 <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Delete</button>
                             </form>

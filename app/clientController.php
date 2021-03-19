@@ -28,18 +28,7 @@ class ClientController
         $client->AC = ClientController::bankIban();
 
 
-
-        $nameLength = strlen($_POST['name']);
-        $surnameLength = strlen($_POST['surname']);
-
-        // if (isset($_POST['name']) && isset($_POST['surname'])) {
-        //     if ($nameLength < 3 || $surnameLength < 3) {
-
-        //         echo    "Name or Surname are too short";
-        //     } else {
-        // echo 'sdfghjkfghdfghjsdfghjkdfghjksdfghjksdfghj';
-        // die;
-        Json::getDb()->createClient($client); //???
+        Json::getDb()->store($client); //???
         header('Location: ' . URL);
         die;
     }
@@ -52,50 +41,24 @@ class ClientController
         $accountNum =  $first . $x . $lastfigures;
         return $accountNum;
     }
-    public function addMoney($id)
 
+    public function add($id)
     {
         $client = Json::getDb()->getClient($id);
-        $pageTitle = 'Edit Account: ' . $client->id;
-        require DIR . 'views/edit.php';
-        foreach ($this->data as $key => $client) {
-            if ($client['id'] == $id) {
-                $client = ['id' => $id];
-                $this->data[$key] = $client;
-                $client['balance'] += $count;
-                if ($client['balance'] > 0) {
-                    $_SESSION['messages']['success'][] = "Amount was added!";
-                    header('Location:' . URL);
-                } else {
-                    $_SESSION['messages']['error'][] = "Account cannot be overdrafted";
-                    header('Location:' . URL . 'add');
-                }
-                return;
-            }
-        }
+        $pageTitle = 'Add money - Fill in the fields to add a new account';
+        require DIR . 'views/add.php';
     }
-    // {
-    //     // $clients =  read();
-    //     $client = $this->getClient($id); // check if client is set
-    //     if (!$client) {
-    //         return;
-    //     }
-    //     if ($client->id = $id) {
-    //     }
-    //     foreach ($this->data as $key => $client) {
-    //         if ($client['id'] == $id) {
-    //             $client = ['id' => $id];
-    //             $this->data[$key] = $client;
-    //             $client['balance'] += $count;
-    //             if ($client['balance'] > 0) {
-    //                 $_SESSION['messages']['success'][] = "Amount was added!";
-    //                 header('Location:' . URL);
-    //             } else {
-    //                 $_SESSION['messages']['error'][] = "Account cannot be overdrafted";
-    //                 header('Location:' . URL . 'add');
-    //             }
-    //             return;
-    //         }
-    //     }
-    // }
+    public function send()
+    {
+        // $client = Json::getDb()->getClient($id);
+        $pageTitle = 'Send money - Fill in the fields to add a new account';
+        require DIR . 'views/send.php';
+    }
+    public function delete()
+    {
+        Json::getDb()->delete($id);
+
+        header('Location: ' . URL);
+        die;
+    }
 }

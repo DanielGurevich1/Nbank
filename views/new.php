@@ -6,7 +6,7 @@ $iban = $this->bankIban();
 
 // $x = $this->addMoney();
 // echo $x;
-_d($id);
+// _d($id);
 ?>
 <div class="container">
 
@@ -42,10 +42,7 @@ _d($id);
 
     </form>
 
-</div>
-<?php require DIR . 'views/bottom.php'; ?>
 
-</form>
 </div>
 <?php require DIR . 'views/bottom.php'; ?>
 

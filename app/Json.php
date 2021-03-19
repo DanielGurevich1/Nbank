@@ -27,6 +27,14 @@ class Json
         // before unset data should be put to json file, to store it
         file_put_contents(DIR . 'data/client.json', json_encode($this->data));
     }
+
+    public function store(Client $client): void
+    {
+
+        $id = $this->getNextId();
+        $client->id = $id;
+        $this->data[] = $client;
+    }
     public function read(): array
     {
         return $this->data;
@@ -39,6 +47,7 @@ class Json
 
     public function getNextId(): int
     {
+
         if (!file_exists(DIR . 'data/indexes.json')) {
             $index = json_encode(['id' => 1,]);
             file_put_contents(DIR . 'data/indexes.json', $index);
@@ -53,6 +62,7 @@ class Json
         $index = json_encode($index);
         file_put_contents(DIR . 'data/indexes.json', $index);
         return $id;
+        _dd($id);
     }
 
     public  function getClient(int $id)
@@ -63,7 +73,7 @@ class Json
                 return $client;
             }
         }
-        return null;
+        // return null;
     }
 
     public function createClient(Client $client): void
@@ -75,58 +85,46 @@ class Json
         $this->write($this->data);
     }
 
-    public function addMoney(int $id, int $count)
+    public function add(object $updateClient)
 
     {
-        // $clients =  read();
-        $client = $this->getClient($id); // check if client is set
-        if (!$client) {
-            return;
-        }
-        if ($client->id = $id) {
-        }
         foreach ($this->data as $key => $client) {
-            if ($client['id'] == $id) {
-                $client = ['id' => $id];
-                $this->data[$key] = $client;
-                $client['balance'] += $count;
-                if ($client['balance'] > 0) {
-                    $_SESSION['messages']['success'][] = "Amount was added!";
-                    header('Location:' . URL);
-                } else {
-                    $_SESSION['messages']['error'][] = "Account cannot be overdrafted";
-                    header('Location:' . URL . 'add');
-                }
+            if ($client->id == $updateClient->id) {
+                // $client = ['id' => $id];
+                $this->data[$key] = $updateClient;
+
                 return;
             }
         }
     }
-    public function sendMoney(int $id, int $count)
+    // public function sendMoney(int $id, int $count)
 
-    {
+    // {
 
-        $client = $this->getClient($id);
-        if (!$client) {
-            return;
-        }
-        $client = ['id' => $id];
-        $client['balance'] -= $count;
+    //     $client = $this->getClient($id);
+    //     if (!$client) {
+    //         return;
+    //     }
+    //     $client = ['id' => $id];
+    //     $client['balance'] -= $count;
 
-        if ($client['balance'] < 0) {
-            $_SESSION['messages']['error'][] = "Account cannot be overdrafted";
-            header('Location:' . URL . 'send');
-        } else {
-            $_SESSION['messages']['success'][] = "Well done - money sent!";
-            header('Location:' . URL);
-        }
-    }
+    //     if ($client['balance'] < 0) {
+    //         $_SESSION['messages']['error'][] = "Account cannot be overdrafted";
+    //         header('Location:' . URL . 'send');
+    //     } else {
+    //         $_SESSION['messages']['success'][] = "Well done - money sent!";
+    //         header('Location:' . URL);
+    //     }
+    // }
 
-    public function deleteUser(int $id): void
+    public function delete(int $id): void
     {
 
         foreach ($this->data as $key => $client) {
             if ($client->id == $id) { // ??
                 unset($this->data[$key]);
+                _dd($id);
+                $this->data = array_values($this->data);
                 return;
             }
         }
