@@ -6,8 +6,6 @@ require __DIR__ . '/bootstrap.php';
 // decode the request line
 $uri = explode('/', str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']));
 
-_d($uri);
-
 // routing
 
 if ('' == $uri[0]) {

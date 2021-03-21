@@ -42,18 +42,30 @@ class ClientController
         return $accountNum;
     }
 
-    public function add($id)
+    public function add(int $id)
     {
-        $client = Json::getDb()->getClient($id);
+
         $pageTitle = 'Add money - Fill in the fields to add a new account';
+        $client = Json::getDb()->getClient($id);
+        $client->balance += (int) ($_POST['topup'] ?? 0);
+
+        Json::getDb()->update($client);
+        _d($client);
         require DIR . 'views/add.php';
     }
-    public function send($id)
+
+
+    public function send(int $id)
     {
-        $client = Json::getDb()->getClient($id);
         $pageTitle = 'Send money - Fill in the fields to add a new account';
-        require DIR . 'views/send.php';
+
+        $client = Json::getDb()->getClient($id);
+        Json::getDb()->update($client);
+        $client->balance -= (int) ($_POST['send'] ?? 0);
+        _d($client);
+        require DIR . 'views/add.php';
     }
+
     public function delete($id)
     {
         Json::getDb()->delete($id);

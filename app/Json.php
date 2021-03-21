@@ -85,7 +85,7 @@ class Json
         $this->write($this->data);
     }
 
-    public function add(object $updateClient)
+    public function update(object $updateClient)
 
     {
         foreach ($this->data as $key => $client) {

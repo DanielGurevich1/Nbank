@@ -4,13 +4,8 @@ require DIR . 'views/menu.php';
 
 $iban = $this->bankIban();
 
-// $x = $this->addMoney();
-// echo $x;
-// _d($id);
 ?>
 <div class="container">
-
-
     <a href="<?= URL ?>login.php?logout">Logout</a>
 
     <h5><?= $pageTitle ?></h5>
@@ -23,68 +18,29 @@ $iban = $this->bankIban();
                 <th scope="col">ID</th>
                 <th scope="col">ACC NUM</th>
                 <th scope="col">Balance</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Sum</th>
+                <th scope="col">Add</th>
+
+
             </tr>
         </thead>
         <tbody>
 
-            <?php foreach ([] as $client) : ?>
-
-            <tr>
+            <form action="" method="post">
                 <th scope="row"><?= $client->id ?></th>
                 <td><?= $client->name ?></td>
                 <td><?= $client->surname ?></td>
                 <td><?= $client->idn ?></td>
                 <td><?= $client->AC ?> </td>
                 <td><?= $client->balance ?> EUR</td>
-
-
-
                 <td>
-                    <form action="" method="POST">
-                        <input type="hidden" name="id" value="<?= $client->id ?>">
+                    <input type="number" name="topup" placeholder="sum">
+                </td>
+                <td>
+                    <form style="diplay:inline-block" action="<?= URL ?>add/<?= $client->id ?>" method="POST">
 
-                        <button href="http://localhost:8898/Nbank/addMoney" name="btn-add"
-                            class="btn btn-sm btn-outline-primary">Add</button>
-                        <button href="http://localhost:8898/Nbank/send" name="btn-send"
-                            class="btn btn-sm btn-outline-secondary">Send</button>
-                        <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Delete</button>
+                        <button type="submit" name="btn-add" class="btn btn-sm btn-outline-secondary">Add</button>
                     </form>
                 </td>
-            </tr>
 
-        </tbody>
-        <?php endforeach ?>
-
-
-
-
-        <?php foreach ([] as $client) : ?>
-        <form action="<?= URL ?>add" class="row row-cols-lg-auto align-items-center" method="post">
-            <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name" value=""
-                        name="name">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" value=""
-                        name="surname">
-                </div>
-
-
-
-                <div class="col">
-                    <input type="number" class="form-control" placeholder="Top up sum" aria-label="Account_number"
-                        value="" name="top_up">
-                </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-outline-primary">add </button>
-                </div>
-            </div>
-
-        </form>
-        <?php endforeach; ?>
-
-
-</div>
-<?php require DIR . 'views/bottom.php'; ?>
+            </form>
