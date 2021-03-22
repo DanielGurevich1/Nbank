@@ -68,9 +68,27 @@ class ClientController
 
     public function delete($id)
     {
-        Json::getDb()->delete($id);
+        $client = Json::getDb()->getClient($id);
+        if ($client->balance == 0) {
+            Json::getDb()->delete($id);
+            header('Location: ' . URL);
+            $_SESSION['messages']['warning'][] = "sorry to let you go";
+        } else {
+            $_SESSION['messages']['error'][] = "Account with positive balance cannot be deleted";
+            die;
+        }
 
         header('Location: ' . URL);
         die;
+
+        // if ($client['balance'] == 0) {
+        //     deleteUser($id);
+        //     header('Location: ' . URL . 'main.php');
+        //     $_SESSION['messages']['warning'][] = "sorry to let you go";
+        // } else {
+        //     header('Location: ' . URL . 'main.php');
+        //     $_SESSION['messages']['error'][] = "Account with positive balance cannot be deleted";
+        //     die;
+        // }
     }
 }
