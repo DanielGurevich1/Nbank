@@ -18,7 +18,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">ACC NUM</th>
                     <th scope="col">Balance</th>
-                    <th scope="col">Actions</th>
+
                     <th scope="col">Add</th>
                     <th scope="col">Send</th>
                     <th scope="col">Delete</th>
@@ -37,46 +37,40 @@
                 //print
                 foreach ($clients as $client) : ?>
 
-                    <tr>
-                        <th scope="row"><?= $client->id ?></th>
-                        <td><?= $client->name ?></td>
-                        <td><?= $client->surname ?></td>
-                        <td><?= $client->idn ?></td>
-                        <td><?= $client->AC ?> </td>
-                        <td><?= $client->balance ?> EUR</td>
+                <tr>
+                    <th scope="row"><?= $client->id ?></th>
+                    <td><?= $client->name ?></td>
+                    <td><?= $client->surname ?></td>
+                    <td><?= $client->idn ?></td>
+                    <td><?= $client->AC ?> </td>
+                    <td><?= $client->balance ?> EUR</td>
 
+                    </fo rm>
+                    </td>
+                    <td>
+                        <form style="diplay:inline-block" action="<?= URL ?>add/<?= $client->id ?>" method="POST">
 
+                            <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-primary">Add</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form style="diplay:inline-block" action="<?= URL ?>send/<?= $client->id ?>" method="POST">
 
-                        <td>
-                            <form action="" method="POST">
-                                <input type="hidden" name="id" value="<?= $client->id ?>">
+                            <button type="submit" name="btn-delete"
+                                class="btn btn-sm btn-outline-secondary">Send</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form style="diplay:inline-block" action="<?= URL ?>delete/<?= $client->id ?>" method="POST">
 
-                                <!-- <button href="<?= URL ?>add/<?= $client->id ?>" name="btn-add"
-                                class="btn btn-sm btn-outline-primary">Add</button> -->
-                                <button href="http://localhost:8898/Nbank/send" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
-
-                            </form>
-                        </td>
-                        <td>
-                            <form style="diplay:inline-block" action="<?= URL ?>add/<?= $client->id ?>" method="POST">
-
-                                <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Add</button>
-                            </form>
-                            <form style="diplay:inline-block" action="<?= URL ?>send/<?= $client->id ?>" method="POST">
-
-                                <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Send</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form style="diplay:inline-block" action="<?= URL ?>delete/<?= $client->id ?>" method="POST">
-
-                                <button type="submit" name="btn-delete" class="btn btn-sm btn-outline-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
+                            <button type="submit" name="btn-delete"
+                                class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
 
             </tbody>
-        <?php endforeach
+            <?php endforeach
 
 
 
