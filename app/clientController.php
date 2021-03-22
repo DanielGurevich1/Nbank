@@ -60,10 +60,10 @@ class ClientController
         $pageTitle = 'Send money - Fill in the fields to add a new account';
 
         $client = Json::getDb()->getClient($id);
-        Json::getDb()->update($client);
         $client->balance -= (int) ($_POST['send'] ?? 0);
-        _d($client);
-        require DIR . 'views/add.php';
+        Json::getDb()->update($client);
+
+        require DIR . 'views/send.php';
     }
 
     public function delete($id)

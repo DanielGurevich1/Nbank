@@ -38,7 +38,7 @@ $iban = $this->bankIban();
                     <input type="number" name="send" placeholder="sum">
                 </td>
                 <td>
-                    <form style="diplay:inline-block" action="<?= URL ?>send/<?= $client->id ?>" method="POST">
+                    <form style="diplay:inline-block" action="<?= URL ?>send/<?= $client->id ?>" method="post">
 
                         <button type="submit" name="btn-send" class="btn btn-sm btn-outline-secondary">Send</button>
                     </form>

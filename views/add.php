@@ -37,7 +37,7 @@ $iban = $this->bankIban();
                     <input type="number" name="topup" placeholder="sum">
                 </td>
                 <td>
-                    <form style="diplay:inline-block" action="<?= URL ?>add/<?= $client->id ?>" method="POST">
+                    <form style="diplay:inline-block" action="<?= URL ?>add/<?= $client->id ?>" method="post">
 
                         <button type="submit" name="btn-add" class="btn btn-sm btn-outline-secondary">Add</button>
                     </form>
